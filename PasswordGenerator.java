@@ -61,13 +61,14 @@ public class PasswordGenerator
 
 
 
-    public void setRandomLowerAlpha(char[] lowerAlpha, int passSize)
+    public void genPassword()
     {
         int size = passSize;
-        char[] lowerCase = new char[size];
+        
+        char[] lowerCase = new char[passSize];
 
         Random r = new Random();
-        for (int i = 0; i < size; i++ )
+        for (int i = 0; i < passSize ; i++ )
         {
             lowerCase[i] = lowerAlpha[r.nextInt(26)];
                
