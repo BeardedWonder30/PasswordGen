@@ -27,8 +27,6 @@ public class PasswordGeneratorTester {
 
         pass.setPassSize(size);
         pass.setSymbol(needSymbol);
-        //System.out.println(pass.getPassSize());
-        //System.out.println(needSymbol);
         pass.genPassword(); // prints password
 
 
