@@ -1,6 +1,7 @@
 // This utility class can be used to generate random passwords.
 import java.util.Random;
 import java.util.Arrays;
+
 public class PasswordGenerator
 {
     //class variables
@@ -16,10 +17,10 @@ public class PasswordGenerator
             '+', '=', '{', '[', '}', ']', ';', ':', '<', ',', '>', '.', '?', '/',
             '~'};
     private char[] lowerLetter;
-    private int[] passDigit;
+    private char[] passDigit = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '8'};
 
     private int passSize;
-
+    private String symbol;
     // 0-arg constructor
     public PasswordGenerator(){}
 
@@ -31,7 +32,7 @@ public class PasswordGenerator
 
     //constructor (not sure how many args yet)
     public PasswordGenerator(String password, char[] lowerAlpha, char[] upperAlpha,
-                             char[] passSymbol, int[] passDigit, int passSize)
+                             char[] passSymbol, char[] passDigit, int passSize, String symbol)
     {
 
         this.password = password;
@@ -40,6 +41,7 @@ public class PasswordGenerator
         this.passSymbol = passSymbol;
         this.passDigit = passDigit;
         this.passSize = passSize;
+        this.symbol = symbol;
 
     }
 
@@ -54,26 +56,43 @@ public class PasswordGenerator
             this.passSize = passSize;
 
     }
-    public int getPassSize()
+    public int getPassSize(){return this.passSize = passSize;}
+
+    public void setSymbol(String symbol)
     {
-        return this.passSize = passSize;
+        this.symbol = symbol;
     }
+    public String getSymbol(){return this.symbol = symbol;}
 
-
-
+    //genrates the password
     public void genPassword()
     {
+        //variables needed 
         int size = passSize;
-        
         char[] lowerCase = new char[passSize];
+        char[] upperCase = new char[passSize];
+        char[] symbolWanted = new char[passSize];
+        char[] passNum = new char[passSize]; 
+        boolean answer = false;
 
         Random r = new Random();
-        for (int i = 0; i < passSize ; i++ )
+        for (int i = 0; i < passSize; i++ )
         {
             lowerCase[i] = lowerAlpha[r.nextInt(26)];
-               
+            upperCase[i] = upperAlpha[r.nextInt(26)];  
+            symbolWanted[i] = passSymbol[r.nextInt(27)];
+            passNum[i] = passDigit[r.nextInt(10)];
         }
+        for (int i = 0; i < passSize; i++ )
+        {
+
+            
+        }
+
         System.out.println(lowerCase);
+        System.out.println(upperCase);
+        System.out.println(symbolWanted);
+        System.out.println(passNum);
     }
 
    

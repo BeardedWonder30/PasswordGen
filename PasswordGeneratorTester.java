@@ -17,18 +17,23 @@ public class PasswordGeneratorTester {
 
         //scanner
         Scanner input = new Scanner(System.in);
-
+        //method calls
         size = passwordSize(size); // gets password size
+        needSymbol = passNeedSymbol(needSymbol);
 
+        
+        //class or object calls
         PasswordGenerator pass = new PasswordGenerator(); // creates password object
 
         pass.setPassSize(size);
-        System.out.println(pass.getPassSize());
+        pass.setSymbol(needSymbol);
+        //System.out.println(pass.getPassSize());
+        //System.out.println(needSymbol);
+        pass.genPassword(); // prints password
 
-        needSymbol = symbolNeeded(needSymbol);
-        System.out.println(needSymbol);
 
-        pass.genPassword();
+
+
         
 
 
@@ -49,7 +54,7 @@ public class PasswordGeneratorTester {
     }
 
     //input for pass needs symbol
-    public static String symbolNeeded(String needSymbol)
+    public static String passNeedSymbol(String needSymbol)
     {
         boolean answer = false;
         Scanner input = new Scanner(System.in);
@@ -65,9 +70,8 @@ public class PasswordGeneratorTester {
                 return needSymbol; //break;
             }
             else if(needSymbol.equals("no"))
-            {
                 answer = true;
-                            }
+            
             else
             {
                 System.out.print("Does your password need a symbol? yes or no: ");
