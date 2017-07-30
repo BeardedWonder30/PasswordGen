@@ -2,6 +2,10 @@
 import java.util.Random;
 import java.util.Arrays;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.io.*;
+import java.util.Collections;
 
 public class PasswordGenerator
 {
@@ -66,52 +70,52 @@ public class PasswordGenerator
     public String getSymbol(){return this.symbol = symbol;}
 
     //genrates the password
-    public void genPassword()
+    public void genPasswordWithSymbol()
     {
-        //variables needed 
-        int size = passSize;
-        
-        char[] lowerCase = new char[passSize];
-        char[] upperCase = new char[passSize];
-        char[] symbolWanted = new char[passSize];
-        char[] passNum = new char[passSize];
-        char[] password2 = new char[passSize];
-        int lowerCaseSize = lowerCase.length;
-        int upperCaseSize = upperCase.length;
-        int passNumSize = passNum.length;
-        int symbolWantedSize = symbolWanted.length;
-        char[] password = new char[lowerCaseSize + upperCaseSize + passNumSize + symbolWantedSize];
-        boolean answer = false;
-        int passwordSize = password.length;
-
-        Random r = new Random();
-        for (int i = 0; i < passSize; i++ )
+        char[] password = new char[passSize];
+        ArrayList<Character> passwordGen = new ArrayList<Character>();
+        for(char p: lowerAlpha)
+            passwordGen.add(p);
+        for(char p: upperAlpha)
+            passwordGen.add(p);
+        for(char p: passSymbol)
+            passwordGen.add(p);
+        for(char p: passDigit)
+            passwordGen.add(p);
+        Collections.shuffle(passwordGen);
+        for (int i = 0; i < passSize ; i++ )
         {
-            lowerCase[i] = lowerAlpha[r.nextInt(26)];
-            upperCase[i] = upperAlpha[r.nextInt(26)];  
-            symbolWanted[i] = passSymbol[r.nextInt(27)];
-            passNum[i] = passDigit[r.nextInt(10)];
-        }
-        //Copys all the parameter into one
-        System.arraycopy(lowerCase, 0, password, 0, lowerCaseSize);
-        System.arraycopy(upperCase, 0, password, lowerCaseSize, upperCaseSize);
-        System.arraycopy(symbolWanted, 0, password, lowerCaseSize + upperCaseSize, symbolWantedSize);
-        System.arraycopy(passNum, 0, password, lowerCaseSize + upperCaseSize +symbolWantedSize, passNumSize);
-        
-        for (int i = 0; i < passSize; i++ )
-        {
-            password2[i] = password[r.nextInt(passwordSize)];
-        }
-        System.out.println(password2);
+            System.out.print(passwordGen.get(i));
 
-        //System.out.println(lowerCase);
-        //System.out.println(upperCase);
-        //System.out.println(symbolWanted);
-        //System.out.println(passNum);
+        }
+
+
     }
 
-   
-    
+    public void genPasswordWithOutSymbol()
+    {
+        char[] password = new char[passSize];
+        ArrayList<Character> passwordGen = new ArrayList<Character>();
+        for(char p: lowerAlpha)
+            passwordGen.add(p);
+        for(char p: upperAlpha)
+            passwordGen.add(p);
+        for(char p: passDigit)
+            passwordGen.add(p);
+        Collections.shuffle(passwordGen);
+        for (int i = 0; i < passSize ; i++ )
+        {
+            System.out.print(passwordGen.get(i));
+
+        }
+
+
+    }
+
+
+
+
+
 
 
 }

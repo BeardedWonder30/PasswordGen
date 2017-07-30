@@ -13,7 +13,7 @@ public class PasswordGeneratorTester {
         int size = 0;
         String needSymbol = " ";
         
-        //boolean Symbol = false;
+        boolean symbol = false;
 
         //scanner
         Scanner input = new Scanner(System.in);
@@ -27,7 +27,10 @@ public class PasswordGeneratorTester {
 
         pass.setPassSize(size);
         pass.setSymbol(needSymbol);
-        pass.genPassword(); // prints password
+        if(needSymbol.equals("yes"))
+            pass.genPasswordWithSymbol(); // prints password
+        else
+            pass.genPasswordWithOutSymbol();
 
 
 
