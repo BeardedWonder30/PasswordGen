@@ -32,7 +32,7 @@ public class PasswordGeneratorTester {
         else
             pass.genPasswordWithOutSymbol();
 
-
+        System.out.print("\n");
 
 
         

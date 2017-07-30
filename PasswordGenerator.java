@@ -108,6 +108,7 @@ public class PasswordGenerator
             System.out.print(passwordGen.get(i));
 
         }
+        
 
 
     }
